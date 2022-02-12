@@ -12,6 +12,31 @@ function updateProductNumber(product, price, isIncreasing) {
     // update case price
     const productPrice = document.getElementById(product + '-price')
     productPrice.innerText = productNumber * price
+
+    // total Calculate Price function call 
+    totalCalculatePrice()
+}
+
+// price input function
+function getInputForProductPrice(product) {
+    const productInput = document.getElementById(product + '-number')
+    const productNumber = parseInt(productInput.value)
+    return productNumber
+}
+
+// price calculation part
+function totalCalculatePrice() {
+    const phonTotal = getInputForProductPrice('phone') * 1219
+    const caseTotal = getInputForProductPrice('case') * 59
+
+    const subTotal = phonTotal + caseTotal
+    const tex = subTotal * .2
+    const totalPrice = subTotal + tex
+
+    // update price on html
+    document.getElementById('sub-total').innerText = subTotal
+    document.getElementById('tex-amount').innerText = tex.toFixed(2)
+    document.getElementById('total-price').innerText = totalPrice
 }
 
 // case increasing and decreasing even handle
